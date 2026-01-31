@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT2FIGHT - Professional Cutsman Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-red: #E63946;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #0d0d0d;
+            --card-bg: #242424;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-border: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--dark-bg);
+            page-break-after: always;
+            position: relative;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Image Page */
+        .image-page {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--darker-bg);
+            overflow: hidden;
+        }
+
+        .image-page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 297mm;
+        }
+
+        .image-page.contain img {
+            object-fit: contain;
+            background: var(--darker-bg);
+        }
+
+        /* Cover Page */
+        .cover-page {
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 297mm;
+        }
+
+        .cover-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 96px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .logo .fit { color: var(--text-light); }
+        .logo .two { color: var(--primary-red); font-size: 110px; }
+        .logo .fight { color: var(--text-light); }
+
+        .tagline {
+            font-size: 24px;
+            color: var(--text-muted);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .red-bar {
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 20px auto;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .section-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+
+        .section-header .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 8px;
+        }
+
+        /* Checklist Styles */
+        .checklist {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--accent-border);
+            transition: background 0.2s;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item:hover {
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .item-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-red);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .item-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--accent-border);
+            border-radius: 4px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 35px;
+        }
+
+        .content-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--primary-red);
+            margin-right: 15px;
+            border-radius: 2px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bullet-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid var(--accent-border);
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .bullet-list li:last-child {
+            border-bottom: none;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--primary-red);
+            border-radius: 50%;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(230, 57, 70, 0.15);
+            border: 1px solid var(--primary-red);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .warning-box p {
+            color: var(--text-light);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Stats/Highlight Box */
+        .highlight-box {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--primary-red);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /* Page Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--accent-border);
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo .f2f-red { color: var(--primary-red); }
+
+        .page-number {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                margin: 0;
+                padding: 30px;
+                box-shadow: none;
+            }
+
+            .image-page {
+                padding: 0;
+            }
+
+            .cover-page {
+                padding: 0;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Cover with Image -->
+    <div class="page cover-page">
+        <img src="images/page_1_img_1.jpeg" alt="FIT2FIGHT Cutsman at Work">
+        <div class="cover-overlay">
+            <div class="logo">
+                <span class="fit">FIT</span><span class="two">2</span><span class="fight">FIGHT</span>
+            </div>
+            <div class="red-bar"></div>
+            <p class="tagline">Professional Cutsman Services</p>
+        </div>
+    </div>
+
+    <!-- Page 2: Fight Night Checklist -->
+    <div class="page">
+        <div class="section-header">
+            <h1>Fight Night Checklist</h1>
+            <p class="subtitle">Professional Boxing Cornerman</p>
+        </div>
+
+        <div class="checklist">
+            <div class="checklist-item">
+                <span class="item-number">1</span>
+                <span class="item-text">Bucket</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">2</span>
+                <span class="item-text">Scissors</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">3</span>
+                <span class="item-text">2 x Towels</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">4</span>
+                <span class="item-text">Black Gloves</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">5</span>
+                <span class="item-text">Vaseline</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">6</span>
+                <span class="item-text">Nose Plugs</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">7</span>
+                <span class="item-text">Adrenaline (approved diluted use)</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">8</span>
+                <span class="item-text">Water</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">9</span>
+                <span class="item-text">Tape</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">10</span>
+                <span class="item-text">Enswel</span>
+                <span class="checkbox"></span>
+            </div>
+            <div class="checklist-item">
+                <span class="item-number">11</span>
+                <span class="item-text">Ice Bag</span>
+                <span class="checkbox"></span>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <p>Prepared for professional use under recognised boxing commission practice.</p>
+        </div>
+
+        <div class="page-footer">
+            <span class="footer-logo">FIT<span class="f2f-red">2</span>FIGHT</span>
+            <span class="page-number">02</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Action Photo - Corner Team -->
+    <div class="page image-page">
+        <img src="images/page_3_img_1.jpeg" alt="Corner team with fighter">
+    </div>
+
+    <!-- Page 4: Pupil & Neurological Awareness -->
+    <div class="page">
+        <div class="section-header">
+            <h1>Pupil & Neurological Awareness</h1>
+            <p class="subtitle">Cutman Checklist</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Pupil Observation</h2>
+            <ul class="bullet-list">
+                <li>Pupils should be equal in size</li>
+                <li>Pupils should react normally to light</li>
+                <li>Sudden dilation after a heavy shot is a warning sign</li>
+                <li>Unequal pupils (anisocoria) are a serious red flag</li>
+                <li>Sluggish or non-reactive pupils indicate possible neurological distress</li>
+                <li>Worsening pupil response round-to-round must be taken seriously</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Possible Causes of Abnormal Pupils</h2>
+            <ul class="bullet-list">
+                <li>Concussion</li>
+                <li>Raised intracranial pressure / brain trauma</li>
+                <li>Severe neurological shock</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Normal Reasons Pupils May Dilate</h2>
+            <ul class="bullet-list">
+                <li>Adrenaline / fight-or-flight response</li>
+                <li>Fatigue</li>
+                <li>Stress and exertion</li>
+                <li>Lighting changes between ring and corner</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Cutman Responsibilities</h2>
+            <ul class="bullet-list">
+                <li>Observe and report, not diagnose</li>
+                <li>Monitor symmetry and reactivity, not size alone</li>
+                <li>Immediately inform the referee or ringside doctor if concerned</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Quick Corner Safety Check</h2>
+            <ul class="bullet-list">
+                <li>Eyes tracking and focused</li>
+                <li>Pupils equal and responsive</li>
+                <li>Speech clear</li>
+                <li>Balance steady</li>
+                <li>Fighter follows instructions</li>
+                <li>Unequal or non-reactive pupils require immediate escalation</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span class="footer-logo">FIT<span class="f2f-red">2</span>FIGHT</span>
+            <span class="page-number">04</span>
+        </div>
+    </div>
+
+    <!-- Page 5: Action Photo - Cutsman Checking Fighter -->
+    <div class="page image-page">
+        <img src="images/page_5_img_1.jpeg" alt="Cutsman checking fighter">
+    </div>
+
+    <!-- Page 6: Common Hand Injuries -->
+    <div class="page">
+        <div class="section-header">
+            <h1>Common Hand Injuries in Boxing</h1>
+            <p class="subtitle">A practical reference list for boxers, coaches, and corners</p>
+        </div>
+
+        <ul class="bullet-list">
+            <li>Boxer's fracture – fracture of the 5th metacarpal (little-finger knuckle)</li>
+            <li>Metacarpal fractures (2nd–4th) – breaks to the knuckle bones from impact</li>
+            <li>Metacarpal stress fractures – overuse injuries from high training volume</li>
+            <li>Knuckle contusions – bruising and soft-tissue damage over the knuckles</li>
+            <li>Sagittal band rupture (Boxer's knuckle) – tendon stabiliser injury at the knuckle</li>
+            <li>Tendon strains or tears – flexor or extensor tendon damage</li>
+            <li>Wrist sprains – ligament injury due to poor alignment or wrapping</li>
+            <li>Carpal bone fractures – commonly scaphoid fractures near the thumb</li>
+            <li>Thumb injuries – sprains, ligament tears, or fractures</li>
+            <li>Ligament damage – instability of finger or thumb joints</li>
+            <li>Joint inflammation (synovitis) – swelling and stiffness from repetitive trauma</li>
+            <li>Nerve compression or irritation – numbness or tingling in fingers</li>
+            <li>Skin splits and lacerations – cuts over knuckles risking infection</li>
+        </ul>
+
+        <div class="info-card" style="margin-top: 40px;">
+            <h3>Prevention Note</h3>
+            <p>Early reporting, proper hand wrapping, suitable gloves, and load management reduce long-term damage.</p>
+        </div>
+
+        <div class="page-footer">
+            <span class="footer-logo">FIT<span class="f2f-red">2</span>FIGHT</span>
+            <span class="page-number">06</span>
+        </div>
+    </div>
+
+    <!-- Page 7: X-Ray Image -->
+    <div class="page image-page contain">
+        <img src="images/page_7_img_1.jpeg" alt="X-ray showing hand fracture">
+    </div>
+
+    <!-- Page 8: Hand Wraps Importance -->
+    <div class="page">
+        <div class="section-header">
+            <h1>The Importance of 4–4.5 Metre Hand Wraps</h1>
+            <p class="subtitle">Essential Boxing Equipment</p>
+        </div>
+
+        <div class="info-card">
+            <p>In proper boxing training and competition, 4–4.5 metre hand wraps are essential equipment. They are designed to protect the hands, wrists, and thumbs while improving punching safety and longevity.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Key Benefits</h2>
+            <ul class="bullet-list">
+                <li><strong>Knuckle protection:</strong> The length allows multiple layers over the knuckles, reducing fractures, splits, and long-term damage</li>
+                <li><strong>Wrist stability:</strong> Longer wraps secure the wrist using figure-eight techniques, helping keep it straight on impact</li>
+                <li><strong>Thumb and metacarpal support:</strong> Correct wrapping stabilises the thumb and protects common fracture points in the hand</li>
+                <li><strong>Impact distribution:</strong> Wraps fill the glove correctly so force is spread across the hand rather than concentrated on one knuckle</li>
+                <li><strong>Professional standard:</strong> 4–4.5 metre wraps are the accepted standard in serious amateur and professional boxing gyms</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <div class="stat-item">
+                <div class="stat-value">4m</div>
+                <div class="stat-label">Minimum Length</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4.5m</div>
+                <div class="stat-label">Preferred Length</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <p>Hand wraps provide structural support, effectively creating a protective cast around the hand. They are a fundamental part of safe and effective boxing training, not an optional extra.</p>
+        </div>
+
+        <div class="page-footer">
+            <span class="footer-logo">FIT<span class="f2f-red">2</span>FIGHT</span>
+            <span class="page-number">08</span>
+        </div>
+    </div>
+
+    <!-- Page 9: Hand Wraps Product Photo -->
+    <div class="page image-page contain">
+        <img src="images/page_9_img_1.jpeg" alt="Empire hand wraps">
+    </div>
+
+    <!-- Page 10: Unseen Issues & Hematoma -->
+    <div class="page">
+        <div class="section-header">
+            <h1>Unseen Issues & Hematoma</h1>
+            <p class="subtitle">Boxing Corner Safety Guide</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Unseen Issues (Not Visible but High Risk)</h2>
+            <ul class="bullet-list">
+                <li>Brain injury can occur without visible cuts or swelling</li>
+                <li>Concussion signs include delayed reactions, poor balance, confusion, or glazed eyes</li>
+                <li>Repeated head trauma increases risk of second impact syndrome</li>
+                <li>Internal brain bleeding can develop hours after the bout</li>
+                <li>Post-fight warning signs: worsening headache, nausea, vomiting, drowsiness, slurred speech</li>
+                <li>Sustained punishment causes cumulative neurological damage</li>
+                <li>Fighters may insist on continuing despite impairment</li>
+                <li>Corner must intervene before damage becomes irreversible</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Hematoma (Visible Injury)</h2>
+            <ul class="bullet-list">
+                <li>Blood pooling under the skin caused by damaged blood vessels</li>
+                <li>Common areas: around the eye, cheekbone, brow ridge, ear</li>
+                <li>Swelling increases pressure and tissue damage</li>
+                <li>Can impair vision and force a medical stoppage</li>
+                <li>Swollen skin splits more easily, worsening cuts</li>
+                <li>Rapid expansion requires close monitoring</li>
+                <li>Poor management increases risk of doctor or referee stoppage</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Corner Responsibility</h2>
+            <ul class="bullet-list">
+                <li>Protect the fighter from unnecessary damage</li>
+                <li>Assess neurological function, not just visible injuries</li>
+                <li>Manage swelling immediately and effectively</li>
+                <li>Recognise when continuation is unsafe</li>
+                <li>Early stoppage prevents long-term injury</li>
+                <li>Fighter safety always outweighs winning the bout</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span class="footer-logo">FIT<span class="f2f-red">2</span>FIGHT</span>
+            <span class="page-number">10</span>
+        </div>
+    </div>
+
+    <!-- Page 11: Injury Photo -->
+    <div class="page image-page">
+        <img src="images/page_11_img_1.jpeg" alt="Cut treatment example">
+    </div>
+
+    <!-- Page 12: WBC Belts Photo -->
+    <div class="page image-page">
+        <img src="images/page_12_img_1.jpeg" alt="WBC Championship">
+    </div>
+
+</body>
+</html>
