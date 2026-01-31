@@ -31,13 +31,15 @@
         }
 
         .page {
-            width: 210mm;
-            min-height: 297mm;
+            width: 100%;
+            max-width: 210mm;
+            min-height: auto;
             margin: 0 auto;
             padding: 40px;
             background: var(--dark-bg);
             page-break-after: always;
             position: relative;
+            padding-bottom: 80px;
         }
 
         .page:last-child {
@@ -52,13 +54,15 @@
             justify-content: center;
             background: var(--darker-bg);
             overflow: hidden;
+            min-height: 50vh;
+            padding-bottom: 0;
         }
 
         .image-page img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
-            min-height: 297mm;
+            min-height: 50vh;
         }
 
         .image-page.contain img {
@@ -71,13 +75,14 @@
             padding: 0;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            padding-bottom: 0;
         }
 
         .cover-page img {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             object-fit: cover;
-            min-height: 297mm;
         }
 
         .cover-overlay {
@@ -368,6 +373,171 @@
         @page {
             size: A4;
             margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .page {
+                padding: 20px;
+                padding-bottom: 100px;
+            }
+
+            .logo {
+                font-size: 48px;
+            }
+
+            .logo .two {
+                font-size: 56px;
+            }
+
+            .tagline {
+                font-size: 14px;
+                letter-spacing: 4px;
+            }
+
+            .cover-overlay {
+                padding: 40px 20px;
+            }
+
+            .section-header h1 {
+                font-size: 28px;
+            }
+
+            .section-header .subtitle {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .checklist-item {
+                padding: 14px 16px;
+            }
+
+            .item-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+                margin-right: 12px;
+            }
+
+            .item-text {
+                font-size: 14px;
+            }
+
+            .checkbox {
+                width: 20px;
+                height: 20px;
+            }
+
+            .content-section h2 {
+                font-size: 22px;
+            }
+
+            .content-section h2::before {
+                height: 22px;
+                margin-right: 10px;
+            }
+
+            .bullet-list li {
+                padding: 10px 0;
+                padding-left: 24px;
+                font-size: 14px;
+            }
+
+            .bullet-list li::before {
+                width: 6px;
+                height: 6px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .info-card p {
+                font-size: 14px;
+            }
+
+            .warning-box {
+                padding: 16px;
+            }
+
+            .highlight-box {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 20px;
+            }
+
+            .stat-value {
+                font-size: 28px;
+            }
+
+            .page-footer {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                margin-top: 40px;
+            }
+
+            .image-page {
+                min-height: auto;
+            }
+
+            .image-page img {
+                min-height: auto;
+                height: auto;
+            }
+
+            .cover-page {
+                min-height: 80vh;
+            }
+
+            .cover-page img {
+                height: 80vh;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .page {
+                padding: 16px;
+                padding-bottom: 80px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .logo .two {
+                font-size: 42px;
+            }
+
+            .tagline {
+                font-size: 11px;
+                letter-spacing: 3px;
+            }
+
+            .section-header h1 {
+                font-size: 24px;
+            }
+
+            .content-section h2 {
+                font-size: 18px;
+            }
+
+            .bullet-list li {
+                font-size: 13px;
+                padding-left: 20px;
+            }
+
+            .checklist-item {
+                padding: 12px;
+            }
+
+            .item-text {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
